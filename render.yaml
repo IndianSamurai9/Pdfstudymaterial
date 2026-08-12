@@ -2,11 +2,7 @@ services:
   - type: web
     name: os-handwritten-notes-generator
     runtime: python
-    buildCommand: |
-      apt-get update
-      apt-get install -y python3-dev libjpeg-dev zlib1g-dev
-      pip install --upgrade pip
-      pip install -r requirements.txt
+    buildCommand: apt-get update && apt-get install -y python3-dev libjpeg-dev zlib1g-dev && pip install --upgrade pip && pip install -r requirements.txt
     startCommand: streamlit run app.py --server.port $PORT --server.address 0.0.0.0
     envVars:
       - key: OPENAI_API_KEY
